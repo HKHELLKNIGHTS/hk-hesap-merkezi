@@ -1,0 +1,165 @@
+/* ===== HK HESAP MERKEZI V11 CLEAN ===== */
+
+/* Ayrilan gercek tema gorselleri */
+#speed{
+  background-image:url("speed_bg.png")!important;
+}
+#train{
+  background-image:url("train_bg.png")!important;
+}
+#troops{
+  background-image:url("troops_bg.png")!important;
+}
+#rally{
+  background-image:url("rally_bg.png")!important;
+}
+
+/* Ralli donma probleminin asil cozumu */
+#rallyCells{
+  position:absolute!important;
+  inset:0!important;
+  z-index:45!important;
+  pointer-events:none!important;
+}
+#rallyCells .live{
+  pointer-events:none!important;
+}
+
+.hot,
+.choice,
+.floating,
+.field{
+  pointer-events:auto!important;
+}
+
+/* Android number oklarini kaldir */
+input[type="number"]{
+  appearance:textfield!important;
+  -moz-appearance:textfield!important;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+  -webkit-appearance:none!important;
+  margin:0!important;
+}
+
+/* Temiz veri alani */
+.field{
+  z-index:50!important;
+  background:#0a0b0b!important;
+  border:1px solid #a87522!important;
+  border-radius:7px!important;
+  color:#e8edf3!important;
+  outline:none!important;
+  box-shadow:inset 0 2px 7px rgba(0,0,0,.9)!important;
+  padding:0 11px!important;
+  font-size:clamp(15px,3.5vw,22px)!important;
+}
+
+.choice{
+  z-index:52!important;
+  background:linear-gradient(#111210,#070807)!important;
+  border:1px solid #a87522!important;
+  border-radius:8px!important;
+  color:#f3e2bb!important;
+  box-shadow:inset 0 0 0 1px #251706!important;
+  padding:0 4px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  font-size:clamp(10px,2.75vw,18px)!important;
+}
+
+.choice.active{
+  background:linear-gradient(#9b1b08,#430a04)!important;
+  border:2px solid #ff7518!important;
+  color:#fff1ca!important;
+  box-shadow:
+    inset 0 0 0 1px #e99c27,
+    0 0 12px rgba(255,65,8,.8)!important;
+}
+
+.hk-mask{
+  position:absolute;
+  z-index:40;
+  pointer-events:none;
+  background:#080908;
+}
+
+.hk-result-mask{
+  position:absolute;
+  z-index:60;
+  pointer-events:none;
+  background:#080807;
+  border-radius:5px;
+}
+
+/* Sonuc degerleri */
+#sd,#sh,#sm,#td,#th,#tm{
+  z-index:70!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#ffad18!important;
+  font-size:clamp(24px,6vw,40px)!important;
+  line-height:1!important;
+}
+
+#trainResult{
+  z-index:70!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:#ffb01a!important;
+  font-size:clamp(22px,5.8vw,40px)!important;
+}
+
+.hint{
+  z-index:72!important;
+  color:#e8cd93!important;
+}
+
+#rallyCells .live{
+  background:#080807!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#fff0ce!important;
+}
+
+/* ===== V12 SON GORSEL + YUKLEME DUZELTMESI ===== */
+
+/* Ilk acilista yarim yuklenmis ekran gostermiyoruz */
+body:not(.hk-ready) .app{
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+body:not(.hk-ready)::before{
+  content:"⚔️ HK HESAP MERKEZİ YÜKLENİYOR...";
+  position:fixed;
+  z-index:9999;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:#050302;
+  color:#f3d38e;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:18px;
+  font-weight:900;
+  text-align:center;
+}
+
+body.hk-ready .app{
+  opacity:1!important;
+  transition:opacity .18s ease;
+}
+
+/* Sonuc alt yazilari panelin icinde temiz dursun */
+#speed .hint,
+#train .hint,
+#troops .hint{
+  background:transparent!important;
+  white-space:nowrap!important;
+}
